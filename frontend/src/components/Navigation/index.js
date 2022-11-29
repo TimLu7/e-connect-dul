@@ -7,7 +7,7 @@ const Navigation = () => {
 
   // check if user logged in
   const getProfile = () => {
-    fetch("/getusers")
+    fetch("https://project3-tp1q.onrender.com/getusers")
       .then((res) => res.json())
       .then((user) => {
         console.log("get user success length", user.user);
@@ -21,7 +21,7 @@ const Navigation = () => {
   useEffect(getProfile, []);
   const logout = () => {
     setUser(undefined);
-    fetch("/logout")
+    fetch("https://project3-tp1q.onrender.com/logout")
       .then((res) => res.json())
       .then((ret) => {
         if (ret.isLoggedOut) {

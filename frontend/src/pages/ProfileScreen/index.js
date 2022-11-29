@@ -25,7 +25,7 @@ const ProfileScreen = () => {
       // let user = {};
       // user.username = currentUser.username;
       // console.log("User to be deleted: ", user);
-      const res = fetch("/deleteUser", {
+      const res = fetch("https://project3-tp1q.onrender.com/deleteUser", {
         method: "post",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({}),
@@ -66,7 +66,7 @@ const ProfileScreen = () => {
       user.email = email;
       user.education = education;
       console.log("Saving profile of", user);
-      fetch("/saveProfile", {
+      fetch("https://project3-tp1q.onrender.com/saveProfile", {
         method: "post",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(user),

@@ -15,7 +15,7 @@ function LoginForm() {
     user.username = username;
     user.password = password;
 
-    await fetch("/login", {
+    await fetch("https://project3-tp1q.onrender.com/login", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(user),

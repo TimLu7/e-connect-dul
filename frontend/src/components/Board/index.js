@@ -6,7 +6,7 @@ const Board = () => {
   const [user, setUser] = useState({});
 
   const getProfile = () => {
-    fetch("/getusers")
+    fetch("https://project3-tp1q.onrender.com/getusers")
       .then((res) => res.json())
       .then((user) => {
         console.log("board get user", user);

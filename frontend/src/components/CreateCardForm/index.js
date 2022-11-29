@@ -43,7 +43,7 @@ const CreateCardForm = () => {
     user.image = event.target.image.value;
     // do stuff
     console.log("User:", user);
-    fetch("/createMyCard", {
+    fetch("https://project3-tp1q.onrender.com/createMyCard", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(user),

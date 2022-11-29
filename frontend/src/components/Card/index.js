@@ -36,7 +36,7 @@ const Card = ({ currentUser, status }) => {
     user.location = event.target.location.value;
     user.image = event.target.image.value;
     user.id = currentUser.id;
-    fetch("/updateCard", {
+    fetch("https://project3-tp1q.onrender.com/updateCard", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(user),
@@ -46,7 +46,7 @@ const Card = ({ currentUser, status }) => {
   const [show, setShow] = useState(true);
   const deleteCard = () => {
     let req = { id: currentUser.id };
-    fetch("/deleteCard", {
+    fetch("https://project3-tp1q.onrender.com/deleteCard", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(req),

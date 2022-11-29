@@ -57,7 +57,7 @@ const Cardlist = ({ status }) => {
 
   // check if user logged in
   const getProfile = () => {
-    fetch("/getusers")
+    fetch("https://project3-tp1q.onrender.com/getusers")
       .then((res) => res.json())
       .then((user) => {
         console.log("get user success");
@@ -71,7 +71,7 @@ const Cardlist = ({ status }) => {
 
   const populateCards = () => {
     if (user !== null) {
-      fetch(`/get${status}Cards`)
+      fetch(`https://project3-tp1q.onrender.com/get${status}Cards`)
         .then((res) => res.json())
         .then((item) => {
           console.log("fetching success");
