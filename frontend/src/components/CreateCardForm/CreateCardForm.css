@@ -1,0 +1,17 @@
+.createCard {
+  width: 500px;
+}
+
+.col {
+  width: 100%;
+}
+
+.btn-primary {
+  background-color: #18abd8;
+  border: none;
+  margin: 15px 0;
+}
+
+.form-group {
+  margin: 10px;
+}

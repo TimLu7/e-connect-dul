@@ -1,0 +1,36 @@
+.signup-screen {
+  min-height: 74vh;
+}
+
+.signup-input-label {
+  margin-left: 4em;
+}
+
+.signup-input {
+  width: 80%;
+  margin-left: 3em;
+  margin-bottom: 1em;
+}
+
+#signup-form {
+  margin: 50px auto;
+  width: 30%;
+  height: 50%;
+  min-width: 300px;
+  max-width: 500px;
+  max-height: 500px;
+  background-color: #ffffff;
+  border-radius: 25px;
+}
+
+#register-button {
+  position: relative;
+  left: 70%;
+}
+
+#register-title {
+  text-align: center;
+  font-family: "open sans", sans-serif;
+  padding: 15px 0 2px 0;
+  font-size: 3em;
+}

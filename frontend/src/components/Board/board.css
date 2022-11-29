@@ -1,0 +1,59 @@
+.board {
+  width: 100%;
+  height: 400px;
+  background-color: #0093e9;
+  background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
+  padding: 100px;
+}
+
+.board-title {
+  margin-bottom: 50px;
+  color: #ffffff;
+}
+
+.board-signup-span {
+  position: relative;
+  display: inline-flex;
+  width: 160px;
+  height: 55px;
+  margin: 0 15px;
+  perspective: 1000px;
+}
+
+.board-signup {
+  font-size: 19px;
+  letter-spacing: 1px;
+  transform-style: preserve-3d;
+  transform: translateZ(-25px);
+  transition: transform 0.25s;
+  font-family: "Montserrat", sans-serif;
+}
+
+.board-signup:before,
+.board-signup:after {
+  position: absolute;
+  content: "Start for free";
+  height: 55px;
+  width: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 5px solid #ebc8b5;
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+
+.board-signup:before {
+  color: rgb(11, 11, 11);
+  background: #ebc8b5;
+  transform: rotateY(0deg) translateZ(25px);
+}
+
+.board-signup:after {
+  color: #ebc8b5;
+  transform: rotateX(90deg) translateZ(25px);
+}
+
+.board-signup:hover {
+  transform: translateZ(-25px) rotateX(-90deg);
+}
