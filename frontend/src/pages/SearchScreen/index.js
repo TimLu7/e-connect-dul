@@ -10,7 +10,7 @@ const SearchScreen = () => {
   const [searchContent, setSearchContent] = useState("");
   const handeler = () => {};
   const populateCards = () => {
-    fetch(`/getPublicCards`)
+    fetch(`https://project3-tp1q.onrender.com/getPublicCards`)
       .then((res) => res.json())
       .then((item) => {
         console.log("fetching public cards");
