@@ -25,6 +25,7 @@ function SignUpForm() {
     }
   }
   const navigate = useNavigate();
+  const [isRegistered, setIsRegistered] = useState(false);
   async function handleRegister(e) {
     e.preventDefault();
     if (password !== passwordTwo) {
@@ -53,8 +54,14 @@ function SignUpForm() {
         body: JSON.stringify(user),
       })
         .then((res) => {
-          console.log("signup complete", res);
-          navigate("/login");
+          console.log("signup complete", res.ok);
+          if (res.isRegistered) {
+            // console.log()
+            setIsRegistered(true);
+          }
+          setTimeout(() => {
+            navigate("/login");
+          }, 2000);
         })
         .catch((err) => {
           console.log(err);
@@ -128,6 +135,7 @@ function SignUpForm() {
             value={passwordTwo}
             required
           ></input>
+          {isRegistered ? <h3>User already exists</h3> : ""}
         </div>
         <button id="register-button" type="submit" className="btn btn-primary">
           Register

@@ -7,46 +7,28 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const ProfileScreen = () => {
-  // const dummyUser = await fetch("/getProfile").then((res) => res.json());
-  // setCurrentUser(ret);
-  // console.log("res", ret);
-  // res.json();
-  // res.send(ret))
-  //
-  const [currentUser, setCurrentUser] = useState({
-    firstname: "",
-    lastname: "",
-    phone: "",
-    addressLOne: "",
-    addressLTwo: "",
-    postcode: "",
-    addressState: "",
-    country: "",
-    email: "",
-    education: "",
-  });
-  const [firstName, setFirstName] = useState(currentUser.firstname);
-  const [lastName, setLastName] = useState(currentUser.lastname);
-  const [phoneNumber, setPhoneNumber] = useState(currentUser.phone);
-  const [addressLOne, setAddressLOne] = useState(currentUser.addressLOne);
-  const [addressLTwo, setAddressLTwo] = useState(currentUser.addressLTwo);
-  const [postcode, setPostcode] = useState(currentUser.postcode);
-  const [addressState, setAddressState] = useState(currentUser.addressState);
-  const [country, setCountry] = useState(currentUser.country);
-  const [email, setEmail] = useState(currentUser.email);
-  const [education, setEducation] = useState(currentUser.education);
+  const [firstName, setFirstName] = useState("Jimmy");
+  const [lastName, setLastName] = useState("Zhang");
+  const [phoneNumber, setPhoneNumber] = useState("123456789");
+  const [addressLOne, setAddressLOne] = useState("600 california");
+  const [addressLTwo, setAddressLTwo] = useState("");
+  const [postcode, setPostcode] = useState("91234");
+  const [addressState, setAddressState] = useState("CA");
+  const [country, setCountry] = useState("USA");
+  const [email, setEmail] = useState("456@gmail.com");
+  const [education, setEducation] = useState("NEU");
   const navigate = useNavigate();
   function handleDeleteUser(e) {
     // e.preventDefault();
     console.log("Start deleting User");
     try {
-      let user = {};
-      user.username = currentUser.username;
-      console.log("User to be deleted: ", user);
+      // let user = {};
+      // user.username = currentUser.username;
+      // console.log("User to be deleted: ", user);
       const res = fetch("/deleteUser", {
         method: "post",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(user),
+        body: JSON.stringify({}),
       })
         .then((res) => {
           console.log("before refirect", res.isDeleted);
@@ -96,26 +78,25 @@ const ProfileScreen = () => {
     }
   }
 
-  const getCurrentUser = () => {
-    fetch("/getProfile")
-      .then(async (res) => {
-        const ret = await res.json();
-        setCurrentUser(ret);
-        console.log("res", ret);
-        // res.json();
-        // res.send(ret);
-      })
-      .catch(() => {
-        console.log("get user fail!!!!");
-        // setCurrentUser(null);
-      });
-  };
+  // const getCurrentUser = () => {
+  //   fetch("/getProfile")
+  //     .then(async (res) => {
+  //       const ret = await res.json();
+  //       console.log("res", ret);
+  //       // res.json();
+  //       // res.send(ret);
+  //     })
+  //     .catch(() => {
+  //       console.log("get user fail!!!!");
+  //       // setCurrentUser(null);
+  //     });
+  // };
 
   // const updateing = (currentUser) => {
   //   setFirstName(currentUser.firstname);
   //   setEmail(currentUser.email);
   // };
-  useEffect(getCurrentUser, []);
+  // useEffect(getCurrentUser, []);
   // useEffect(updateing, []);
 
   return (
@@ -131,8 +112,10 @@ const ProfileScreen = () => {
                 src="/images/profile-icon1.png"
                 alt="profile-icon"
               ></img>
-              <span className="font-weight-bold">{currentUser.name}</span>
-              <span className="text-black-50">{currentUser.email}</span>
+              <span className="font-weight-bold">
+                {firstName + " " + lastName}
+              </span>
+              <span className="text-black-50">{email}</span>
               <span> </span>
             </div>
           </div>
