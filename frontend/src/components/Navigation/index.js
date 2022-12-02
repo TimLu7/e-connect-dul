@@ -2,30 +2,33 @@ import "./Navigation.css";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-const Navigation = () => {
-  const [user, setUser] = useState({});
-
+const Navigation = ({ current, changeUser }) => {
+  // const [user, setUser] = useState(undefined);
+  // const navigate = useNavigate();
   // check if user logged in
-  const getProfile = () => {
-    fetch("https://project3-tp1q.onrender.com/getusers")
-      .then((res) => res.json())
-      .then((user) => {
-        console.log("get user success length", user.user);
-        setUser(user);
-      })
-      .catch(() => {
-        console.log("get user fail!!!!");
-        setUser({});
-      });
+  // const getProfile = () => {
+  //   fetch("/getusers")
+  //     .then((res) => res.json())
+  //     .then((user) => {
+  //       console.log("get user success length", user.user);
+  //       setUser(user.user);
+  //     })
+  //     .catch(() => {
+  //       console.log("get user fail!!!!");
+  //       setUser({});
+  //     });
+  // };
+  const checkpoint = () => {
+    console.log("NAV currentUser", current);
   };
-  useEffect(getProfile, []);
+  useEffect(checkpoint, [current]);
   const logout = () => {
-    setUser(undefined);
-    fetch("https://project3-tp1q.onrender.com/logout")
+    fetch("/logout")
       .then((res) => res.json())
       .then((ret) => {
         if (ret.isLoggedOut) {
           console.log("logout successfully");
+          changeUser(undefined);
         } else {
           console.log("logout fail");
         }
@@ -61,7 +64,7 @@ const Navigation = () => {
                   />
                 </Link>
               </li>
-              {user.user !== undefined ? (
+              {current !== undefined ? (
                 <li className="nav-item">
                   <Link to="/" className="nav-link" onClick={logout}>
                     Logout
@@ -74,7 +77,7 @@ const Navigation = () => {
                   </Link>
                 </li>
               )}
-              {user.user === undefined ? (
+              {current === undefined ? (
                 <li className="nav-item">
                   <Link to="/signup" className="nav-link">
                     Signup
@@ -84,7 +87,7 @@ const Navigation = () => {
                 ""
               )}
 
-              {user.user !== undefined ? (
+              {current !== undefined ? (
                 <li className="nav-item">
                   <Link to="/profile" className="nav-link">
                     Profile

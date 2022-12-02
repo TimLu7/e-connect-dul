@@ -7,7 +7,7 @@ function LoginForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  async function handleSubmit(evt) {
+  function handleSubmit(evt) {
     evt.preventDefault();
     console.log("Start login process");
     console.log(username, password);
@@ -15,13 +15,13 @@ function LoginForm() {
     user.username = username;
     user.password = password;
 
-    await fetch("https://project3-tp1q.onrender.com/login", {
+    fetch("/login", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(user),
     })
       .then((res) => {
-        console.log("verified", res);
+        console.log("verified", res.user);
         navigate("/");
       })
       .catch((err) => {
@@ -38,7 +38,7 @@ function LoginForm() {
             <h2 id="login-form-title">Login</h2>
             <div className="form-group">
               <label className="login-input-label" for="loginName">
-                Name:
+                Username:
               </label>
               <input
                 type="text"

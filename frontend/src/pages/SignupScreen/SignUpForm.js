@@ -48,7 +48,7 @@ function SignUpForm() {
       user.country = "";
       user.education = "";
       console.log("User", user);
-      await fetch("https://project3-tp1q.onrender.com/signup", {
+      await fetch("/signup", {
         method: "post",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(user),

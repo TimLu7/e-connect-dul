@@ -46,15 +46,26 @@ const Card = ({ currentUser, status }) => {
   const [show, setShow] = useState(true);
   const deleteCard = () => {
     let req = { id: currentUser.id };
-    fetch("https://project3-tp1q.onrender.com/deleteCard", {
+    fetch("/deleteCard", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(req),
     });
     setShow(false);
   };
-
-  const [addCard, setAddCard] = useState({});
+  const galleryCard = () => {
+    console.log("search rendering", status);
+    if (status === "gallery") {
+      return "";
+    } else if (status === true) {
+      return (
+        <span>
+          <button>Add</button>
+        </span>
+      );
+    }
+  };
+  // const [addCard, setAddCard] = useState({});
 
   return (
     <>
@@ -98,9 +109,7 @@ const Card = ({ currentUser, status }) => {
             </div>
             <div className="col-xs-4 buttons-container">
               {isPublic ? (
-                <span>
-                  <button onClick={() => setAddCard()}>Add</button>
-                </span>
+                galleryCard()
               ) : (
                 <span>
                   <button onClick={() => setUpdateCard((prev) => !prev)}>

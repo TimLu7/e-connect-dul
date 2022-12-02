@@ -5,12 +5,28 @@ import Footer from "../../components/Footer";
 import { useState, useEffect } from "react";
 
 const SearchScreen = () => {
+  const [user, setUser] = useState(undefined);
+  const getUser = () => {
+    fetch("/getusers")
+      .then((res) => res.json())
+      .then((user) => {
+        console.log("home screen getuser", user.user);
+        setUser(user.user);
+      })
+      .catch(() => {
+        console.log("home screen fail");
+      });
+  };
+  const changeUser = (prop) => {
+    setUser(prop);
+  };
+  useEffect(getUser, []);
   const [cards, setCards] = useState([]);
   // const [user, setUser] = useState({});
   const [searchContent, setSearchContent] = useState("");
   const handeler = () => {};
   const populateCards = () => {
-    fetch(`https://project3-tp1q.onrender.com/getPublicCards`)
+    fetch(`/getPublicCards`)
       .then((res) => res.json())
       .then((item) => {
         console.log("fetching public cards");
@@ -28,7 +44,7 @@ const SearchScreen = () => {
   useEffect(populateCards, []);
   return (
     <div>
-      <Navigation />
+      <Navigation current={user} changeUser={changeUser} />
       <div className="row">
         <div className="col-1">
           <ul className="vertical-bar">

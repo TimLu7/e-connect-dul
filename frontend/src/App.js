@@ -1,21 +1,21 @@
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import "./App.css";
-import { BrowserRouter, Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomeScreen from "./pages/HomeScreen";
 import LoginScreen from "./pages/LoginScreen";
 import SignupScreen from "./pages/SignupScreen";
 import SearchScreen from "./pages/SearchScreen";
 import ProfileScreen from "./pages/ProfileScreen";
 function App() {
-  useEffect(() => {
-    console.log("useEffect fetching data");
-    async function reloadData() {
-      const g = await fetch("/getData");
-      const data = await g.json();
-      console.log(data);
-    }
-    reloadData();
-  }, []);
+  // useEffect(() => {
+  //   console.log("useEffect fetching data");
+  //   async function reloadData() {
+  //     const g = await fetch("/getData");
+  //     const data = await g.json();
+  //     console.log(data);
+  //   }
+  //   reloadData();
+  // }, []);
   return (
     <>
       <BrowserRouter>

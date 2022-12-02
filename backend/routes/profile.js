@@ -18,9 +18,9 @@ profilerouter.get("/getProfile", async (req, res) => {
 profilerouter.post("/saveProfile", async (req, res) => {
   console.log("Update Profile in progress - router");
   try {
-    const user = req.session.user;
-    console.log("user1111 session", user);
-    const ret = await UserDB.updateUser(user, req.body);
+    const user = req.body;
+    console.log("save profile session", user);
+    const ret = await UserDB.updateUser(user);
     console.log("Profile Update Successfully");
     res.json({ isUpdated: ret });
   } catch (e) {
@@ -31,11 +31,16 @@ profilerouter.post("/saveProfile", async (req, res) => {
 profilerouter.post("/deleteUser", async (req, res) => {
   console.log("Delete user in progress - router");
   try {
-    const user = req.session.user;
+    req.session.user = undefined;
+    const user = req.body;
+    // console.log("delete user name");
+    console.log("fetching deleteuser", user);
     const ret = await UserDB.deleteUser(user);
     if (ret) {
+      console.log("before response", ret);
       res.json({ isDeleted: true });
     } else {
+      console.log("before response", ret);
       res.json({ isDeleted: false });
     }
   } catch (e) {

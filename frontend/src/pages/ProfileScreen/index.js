@@ -1,5 +1,4 @@
 // Chun-Wei Tseng
-import PropTypes from "prop-types";
 import "./profile.css";
 import Navigation from "../../components/Navigation";
 import Footer from "../../components/Footer";
@@ -7,69 +6,123 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const ProfileScreen = () => {
-  const [firstName, setFirstName] = useState("Jimmy");
-  const [lastName, setLastName] = useState("Zhang");
-  const [phoneNumber, setPhoneNumber] = useState("123456789");
-  const [addressLOne, setAddressLOne] = useState("600 california");
+  // get currnet user
+  const [user, setUser] = useState(undefined);
+  const getUser = () => {
+    fetch("/getusers")
+      .then((res) => res.json())
+      .then((user) => {
+        console.log("profile screen getuser", user.user);
+        if (user) {
+          setUser(user.user);
+        }
+      })
+      .catch(() => {
+        console.log("profile screen fail");
+      });
+  };
+  const changeUser = (prop) => {
+    setUser(prop);
+  };
+  useEffect(getUser, []);
+  const [profile, setProfile] = useState({});
+  const getProfile = () => {
+    fetch("/getProfile")
+      .then((res) => res.json())
+      .then((res) => {
+        console.log("profile screen getProfile", res);
+        setProfile(res);
+      })
+      .catch(() => {
+        console.log("profile screen fail");
+      });
+  };
+  useEffect(getProfile, [user]);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [addressLOne, setAddressLOne] = useState("");
   const [addressLTwo, setAddressLTwo] = useState("");
-  const [postcode, setPostcode] = useState("91234");
-  const [addressState, setAddressState] = useState("CA");
-  const [country, setCountry] = useState("USA");
-  const [email, setEmail] = useState("456@gmail.com");
-  const [education, setEducation] = useState("NEU");
+  const [postcode, setPostcode] = useState("");
+  const [addressState, setAddressState] = useState("");
+  const [country, setCountry] = useState("");
+  const [email, setEmail] = useState("");
+  const [education, setEducation] = useState("");
+  const fetchingProfile = () => {
+    if (profile) {
+      setFirstName(profile.firstname);
+      setLastName(profile.lastname);
+      setEmail(profile.email);
+      setPhoneNumber(profile.phoneNumber);
+      setAddressLOne(profile.addressLOne);
+      setAddressLTwo(profile.addressLTwo);
+      setPostcode(profile.postcode);
+      setAddressState(profile.addressState);
+      setCountry(profile.country);
+      setEducation(profile.education);
+    }
+  };
+  useEffect(fetchingProfile, [profile]);
   const navigate = useNavigate();
+  const [deleteMes, setDeleteMes] = useState("");
   function handleDeleteUser(e) {
-    // e.preventDefault();
+    e.preventDefault();
     console.log("Start deleting User");
     try {
       // let user = {};
       // user.username = currentUser.username;
-      // console.log("User to be deleted: ", user);
-      const res = fetch("https://project3-tp1q.onrender.com/deleteUser", {
+      console.log("User to be deleted: ", user);
+      fetch("/deleteUser", {
         method: "post",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({}),
+        body: JSON.stringify({
+          username: user,
+        }),
       })
+        .then((res) => res.json())
         .then((res) => {
-          console.log("before refirect", res.isDeleted);
+          console.log("before refirect", res);
           if (res.isDeleted) {
             navigate("/signup");
+          } else {
+            setDeleteMes("user delete failure!!");
           }
         })
         .catch((err) => {
           console.log(err);
         });
-      if (res) {
-        console.log("User is successfully deleted");
-        // redirect to sign up page
-      } else {
-        console.log("User delete failed, please try again");
-      }
+      // if (res) {
+      //   console.log("User is successfully deleted");
+      //   // redirect to sign up page
+      // } else {
+      //   console.log("User delete failed, please try again");
+      // }
     } catch (e) {
       console.log(e);
     }
   }
 
   function handleSaveProfile(e) {
-    // e.preventDefault();
+    e.preventDefault();
     console.log("Start Saving Profile");
     try {
-      let user = {};
-      user.firstname = firstName;
-      user.lastname = lastName;
-      user.phone = phoneNumber;
-      user.addressLOne = addressLOne;
-      user.addressLTwo = addressLTwo;
-      user.postcode = postcode;
-      user.addressState = addressState;
-      user.country = country;
-      user.email = email;
-      user.education = education;
-      console.log("Saving profile of", user);
-      fetch("https://project3-tp1q.onrender.com/saveProfile", {
+      let saveUser = {};
+      saveUser.firstname = firstName;
+      saveUser.lastname = lastName;
+      saveUser.phone = phoneNumber;
+      saveUser.addressLOne = addressLOne;
+      saveUser.addressLTwo = addressLTwo;
+      saveUser.postcode = postcode;
+      saveUser.addressState = addressState;
+      saveUser.country = country;
+      saveUser.email = email;
+      saveUser.education = education;
+      saveUser.username = user;
+      console.log("Saving profile of", saveUser);
+      fetch("/saveProfile", {
         method: "post",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(user),
+        body: JSON.stringify(saveUser),
       }).catch((err) => {
         console.log(err);
       });
@@ -78,30 +131,9 @@ const ProfileScreen = () => {
     }
   }
 
-  // const getCurrentUser = () => {
-  //   fetch("/getProfile")
-  //     .then(async (res) => {
-  //       const ret = await res.json();
-  //       console.log("res", ret);
-  //       // res.json();
-  //       // res.send(ret);
-  //     })
-  //     .catch(() => {
-  //       console.log("get user fail!!!!");
-  //       // setCurrentUser(null);
-  //     });
-  // };
-
-  // const updateing = (currentUser) => {
-  //   setFirstName(currentUser.firstname);
-  //   setEmail(currentUser.email);
-  // };
-  // useEffect(getCurrentUser, []);
-  // useEffect(updateing, []);
-
   return (
     <div className="profile-screen">
-      <Navigation />
+      <Navigation current={user} changeUser={changeUser} />
       <div className="container rounded bg-white mt-5 mb-5">
         <div className="row">
           <div className="col-md-3 border-right">
@@ -234,6 +266,7 @@ const ProfileScreen = () => {
                 >
                   Delete user
                 </button>
+                <h3>{deleteMes}</h3>
               </div>
             </div>
           </div>
@@ -243,14 +276,5 @@ const ProfileScreen = () => {
     </div>
   );
 };
-ProfileScreen.propTypes = {
-  firstName: PropTypes.string.isRequired,
-  lastName: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired,
-  intro: PropTypes.string.isRequired,
-  phone: PropTypes.string.isRequired,
-  job: PropTypes.string.isRequired,
-  location: PropTypes.string.isRequired,
-  profileImg: PropTypes.string.isRequired,
-};
+ProfileScreen.propTypes = {};
 export default ProfileScreen;

@@ -15,7 +15,7 @@ function UserDB() {
   const UserDB = {};
   const url = `mongodb+srv://${DB_USER}:${DB_PASSWORD}@cluster0.g3bcu3h.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
   const USER_COLLECTION = "user";
-
+  const CARD_COLLECTION = "card";
   // functions
   UserDB.authenticate = async (currentuser) => {
     let client;
@@ -114,18 +114,23 @@ function UserDB() {
     }
   };
 
-  UserDB.deleteUser = async (currentUser) => {
+  UserDB.deleteUser = async (user) => {
     let client;
     client = new MongoClient(url);
     try {
       await client.connect();
       const db = client.db(DB_NAME);
       const usersCol = db.collection(USER_COLLECTION);
-      const query = { username: currentUser.username };
-      console.log("current user", currentUser.username);
+      const card_usersCol = db.collection(CARD_COLLECTION);
+      const query = { username: user.username };
+      console.log("current user", user);
       await usersCol.deleteOne(query);
-      const res = await usersCol.findOne(query);
-      if (res) {
+      await card_usersCol.deleteOne(query);
+
+      const res1 = await usersCol.findOne(query);
+      const res2 = await card_usersCol.findOne(query);
+      console.log("after deleteing", res1, res2);
+      if (res1 && res2) {
         console.log("Failed deleting the user");
         return false;
       } else {
@@ -138,15 +143,15 @@ function UserDB() {
     }
   };
 
-  UserDB.updateUser = async (user, currentUser) => {
+  UserDB.updateUser = async (currentUser) => {
     let client;
     client = new MongoClient(url);
     try {
       await client.connect();
       const db = client.db(DB_NAME);
       const usersCol = db.collection(USER_COLLECTION);
-      const query = { username: user };
-      console.log("start update", user);
+      const query = { username: currentUser.username };
+      console.log("start update", currentUser.username);
       await usersCol.updateOne(query, {
         $set: {
           firstname: currentUser.firstname,

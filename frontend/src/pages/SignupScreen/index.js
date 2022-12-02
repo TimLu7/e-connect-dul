@@ -1,7 +1,6 @@
 //Chun-Wei Tseng
 
 import React from "react";
-import PropTypes from "prop-types";
 import Navigation from "../../components/Navigation";
 import SignUpForm from "./SignUpForm";
 import Footer from "../../components/Footer";
