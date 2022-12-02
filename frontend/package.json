@@ -9,6 +9,7 @@
     "bootstrap": "^5.2.2",
     "cor": "^0.0.0",
     "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
     "express-session": "^1.17.3",
     "http-proxy-middleware": "^2.0.6",
     "react": "^18.2.0",
@@ -44,6 +45,5 @@
   },
   "devDependencies": {
     "eslint-config-prettier": "^8.5.0"
-  },
-  "proxy": "https://project3-tp1q.onrender.com"
+  }
 }

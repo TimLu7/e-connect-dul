@@ -1,8 +1,9 @@
 import "./board.css";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-
-const BK = process.env.REMOTE_BACKEND;
+// import dotenv from "dotenv";
+// dotenv.config({ path: "../config.env" });
+// const BK = process.env.REMOTE_BACKEND;
 
 const Board = ({ current }) => {
   // const [user, setUser] = useState({});
@@ -11,7 +12,7 @@ const Board = ({ current }) => {
       <h2 className="board-title">
         {current !== undefined
           ? `Hi, ${current}`
-          : "Get the Best Connections You Deserve!"}
+          : `Get the Best Connections You Deserve!`}
       </h2>
       {current !== undefined ? (
         ""
@@ -20,7 +21,6 @@ const Board = ({ current }) => {
           <Link to="/signup" className="board-signup"></Link>
         </span>
       )}
-      {/* <h1>{BK}</h1> */}
     </div>
   );
 };

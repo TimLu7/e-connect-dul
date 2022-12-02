@@ -1,23 +1,8 @@
 import "./Navigation.css";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
 const Navigation = ({ current, changeUser }) => {
-  // const [user, setUser] = useState(undefined);
-  // const navigate = useNavigate();
-  // check if user logged in
-  // const getProfile = () => {
-  //   fetch("/getusers")
-  //     .then((res) => res.json())
-  //     .then((user) => {
-  //       console.log("get user success length", user.user);
-  //       setUser(user.user);
-  //     })
-  //     .catch(() => {
-  //       console.log("get user fail!!!!");
-  //       setUser({});
-  //     });
-  // };
   const checkpoint = () => {
     console.log("NAV currentUser", current);
   };
