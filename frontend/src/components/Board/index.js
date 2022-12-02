@@ -1,7 +1,8 @@
 import "./board.css";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-// import { useState, useEffect } from "react";
+
+const BK = process.env.REMOTE_BACKEND;
 
 const Board = ({ current }) => {
   // const [user, setUser] = useState({});
@@ -19,6 +20,7 @@ const Board = ({ current }) => {
           <Link to="/signup" className="board-signup"></Link>
         </span>
       )}
+      {/* <h1>{BK}</h1> */}
     </div>
   );
 };

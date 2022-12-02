@@ -45,5 +45,5 @@
   "devDependencies": {
     "eslint-config-prettier": "^8.5.0"
   },
-  "proxy": "http://127.0.0.1:3001"
+  "proxy": "https://project3-tp1q.onrender.com"
 }
