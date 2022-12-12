@@ -1,3 +1,4 @@
+// Kuan Tsa Chen
 import Card from "../Card";
 import "./CreateCardForm.css";
 import { useState } from "react";
@@ -31,7 +32,6 @@ const CreateCardForm = () => {
   };
 
   const onSubmitCreateCard = (event) => {
-    // event.preventDefault();
     const user = {};
     user.firstName = event.target.firstName.value;
     user.lastName = event.target.lastName.value;
@@ -41,8 +41,6 @@ const CreateCardForm = () => {
     user.job = event.target.job.value;
     user.location = event.target.location.value;
     user.image = event.target.image.value;
-    // do stuff
-    console.log("User:", user);
     fetch("/createMyCard", {
       method: "post",
       headers: { "Content-Type": "application/json" },

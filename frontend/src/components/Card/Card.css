@@ -7,7 +7,6 @@
     position: relative;
     margin: 10px auto;
     cursor: pointer;
-    /* height: 800px; */
 }
 
 .buttons-container {
@@ -46,7 +45,6 @@
 .card img {
     margin: 0 auto;
     max-width: 100%;
-    /* height: auto; */
     max-height: 250px;
     object-fit: fill;
     transition: all 0.25s linear;
