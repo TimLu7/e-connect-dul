@@ -11,12 +11,10 @@ dotenv.config({ path: "../../config.env" });
 // const DB_NAME = "E-connect";
 
 function UserDB() {
-  // db setting
   const UserDB = {};
   const url = `mongodb+srv://${DB_USER}:${DB_PASSWORD}@cluster0.g3bcu3h.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
   const USER_COLLECTION = "user";
   const CARD_COLLECTION = "card";
-  // functions
   UserDB.authenticate = async (currentuser) => {
     let client;
     console.log("start useDB");
@@ -29,13 +27,7 @@ function UserDB() {
       const ret = await usersCol
         .findOne({ username: currentuser.username })
         .then(async (user) => {
-          //if user not exist than return status 400
-          // if (!user) res.status(400).json({ msg: "User not exist" });
-          //if user exist than compare password
-          //first param comes from the user
-          //second param comes from the database
           const res = await bcrypt.compare(currentuser.password, user.password);
-          // console.log(r);
           return res;
         });
 
