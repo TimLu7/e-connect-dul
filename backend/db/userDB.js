@@ -2,13 +2,13 @@
 
 import { MongoClient } from "mongodb";
 import bcrypt from "bcryptjs";
-// import dotenv from "dotenv";
-// dotenv.config({ path: "../config.env" });
+import dotenv from "dotenv";
+dotenv.config({ path: "../../config.env" });
 
 // use environment variable
-const DB_USER = "jason";
-const DB_PASSWORD = "1234";
-const DB_NAME = "E-connect";
+// const DB_USER = "jason";
+// const DB_PASSWORD = "1234";
+// const DB_NAME = "E-connect";
 
 function UserDB() {
   // db setting
