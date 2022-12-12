@@ -3,6 +3,7 @@
 import { MongoClient } from "mongodb";
 import dotenv from "dotenv";
 dotenv.config({ path: "../config.env" });
+dotenv.config({ path: "/etc/secrets/config.env" });
 
 const DB_USER = process.env.MY_DB_USERNAME;
 const DB_PASSWORD = process.env.MY_DB_PASSWORD;
