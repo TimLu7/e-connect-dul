@@ -204,15 +204,7 @@ const ProfileScreen = () => {
                     value={addressLTwo}
                   ></input>
                 </div>
-                <div className="col-md-12">
-                  <label className="labels">Postcode</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    onChange={(e) => setPostcode(e.target.value)}
-                    value={postcode}
-                  ></input>
-                </div>
+
                 <div className="col-md-12">
                   <label className="labels">State</label>
                   <input
@@ -229,6 +221,15 @@ const ProfileScreen = () => {
                     className="form-control"
                     onChange={(e) => setCountry(e.target.value)}
                     value={country}
+                  ></input>
+                </div>
+                <div className="col-md-12">
+                  <label className="labels">Zipcode</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    onChange={(e) => setPostcode(e.target.value)}
+                    value={postcode}
                   ></input>
                 </div>
                 <div className="col-md-12">

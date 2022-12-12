@@ -27,7 +27,7 @@ const Navigation = ({ current, changeUser }) => {
             E-connect
           </Link>
           <button
-            className="navbar-toggler"
+            className="navbar-toggler button-onboard"
             data-bs-toggle="collapse"
             data-bs-target="#navbarText"
             type="button"

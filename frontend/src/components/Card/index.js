@@ -53,6 +53,7 @@ const Card = ({ currentUser, status }) => {
     });
     setShow(false);
   };
+
   const galleryCard = () => {
     console.log("search rendering", status);
     if (status === "gallery") {

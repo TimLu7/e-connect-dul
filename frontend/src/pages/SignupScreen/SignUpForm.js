@@ -59,9 +59,9 @@ function SignUpForm() {
             // console.log()
             setIsRegistered(true);
           }
-          setTimeout(() => {
-            navigate("/login");
-          }, 2000);
+          // setTimeout(() => {
+          navigate("/login");
+          // }, 2000);
         })
         .catch((err) => {
           console.log(err);

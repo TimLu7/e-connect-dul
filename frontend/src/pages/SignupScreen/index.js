@@ -15,6 +15,7 @@ const SignupScreen = () => {
         <SignUpForm />
       </div>
       <Footer />
+      {/* test */}
     </>
   );
 };
