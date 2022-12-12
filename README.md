@@ -6,11 +6,8 @@ Link to Class: https://johnguerra.co/classes/webDevelopment_fall_2022/
 
 Link to Home Page:
 
-Design Document: https://docs.google.com/document/d/1UC7R8Ar2xmEfruLl-PssaVnoV53z7722ZwxZbKujE9c/edit#
+Design Document: https://docs.google.com/document/d/1vhc_Klf_8pT1yA9qHOuYvd1ZASYGsN5h7oQ_FzdR9kw/edit#
 
-Video Demonstration:
-
-A web application allowing users to build professional connections.
 
 ## Background
 
@@ -67,15 +64,15 @@ We used AWS as our cloud service provider.
 
 
 ### Color Palette:
+<img width="1675" alt="Screen Shot 2022-12-12 at 1 21 42 AM" src="https://user-images.githubusercontent.com/63666127/207008860-37f66247-24ef-492a-a911-ce546a48f8d7.png">
 
 
 
 
 ### Improvements Made:   
-- Alart when users take actions to avoid confusion.     
+- Create conditional alart when users take actions to avoid confusion.     
 - Darker Background Color that looks more professional.    
 - Improve user accessibility using AXE DevTools.
--
 
 
 
