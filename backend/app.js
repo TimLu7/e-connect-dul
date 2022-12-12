@@ -9,7 +9,7 @@ import cardsRouter from "./routes/cards.js";
 import usersRouter from "./routes/users.js";
 import signuprouter from "./routes/signup.js";
 import profilerouter from "./routes/profile.js";
-
+import dotenv from "dotenv";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
@@ -18,6 +18,7 @@ const PORT = process.env.PORT || 3001;
 
 const app = express();
 
+dotenv.config();
 app.use(cors());
 app.use(logger("dev"));
 app.use(express.json());

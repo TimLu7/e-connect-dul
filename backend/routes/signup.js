@@ -23,9 +23,6 @@ signuprouter.post("/signup", async (req, res) => {
       console.log("Register successful");
       res.json({ isRegistered: false });
     }
-    // console.log("signup ret", ret);
-    // res.json({ isRegistered: ret });
-    // res.redirect("/login");
   } catch (e) {
     console.log(e);
   }

@@ -30,8 +30,6 @@ function MyMongoDB() {
       const cardsCol = database.collection(collections);
       const query = { username: user };
       const cardUser = await cardsCol.findOne(query);
-      // if user doesn't have a card
-      // console.log("mongo card:", card);
       let newHash = 0;
       if (!cardUser) {
         await cardsCol.insertOne({
@@ -45,7 +43,6 @@ function MyMongoDB() {
       }
       card.id = user + newHash;
       console.log(card.id);
-      // console.log("the card", card);
       await cardsCol.updateOne(query, {
         $set: {
           hashing: newHash,
@@ -105,7 +102,6 @@ function MyMongoDB() {
       const query = {
         username: currentUser,
       };
-      // const cardUser = await cardsCol.findOne(query);
       console.log("CARD", card);
       await cardsCol.updateOne(
         query,

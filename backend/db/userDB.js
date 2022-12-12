@@ -3,7 +3,7 @@
 import { MongoClient } from "mongodb";
 import bcrypt from "bcryptjs";
 import dotenv from "dotenv";
-dotenv.config({ path: "../../config.env" });
+dotenv.config({ path: "../config.env" });
 dotenv.config({ path: "/etc/secrets/config.env" });
 
 // use environment variable
@@ -13,7 +13,6 @@ const DB_NAME = process.env.MY_DB_NAME;
 
 function UserDB() {
   const UserDB = {};
-  // console.log("debug", DB_NAME, DB_PASSWORD, DB_USER);
   const url = `mongodb+srv://${DB_USER}:${DB_PASSWORD}@cluster0.g3bcu3h.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
   const USER_COLLECTION = "user";
   const CARD_COLLECTION = "card";
