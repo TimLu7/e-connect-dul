@@ -5,15 +5,15 @@ import Footer from "../../components/Footer";
 import "./login.css";
 
 const LoginScreen = () => {
-  return (
-    <>
-      <Navigation />
-      <div className="login-screen">
-        <LoginForm />
-      </div>
-      <Footer />
-    </>
-  );
+    return (
+        <main>
+            <Navigation />
+            <div className="login-screen">
+                <LoginForm />
+            </div>
+            <Footer />
+        </main>
+    );
 };
 
 LoginScreen.propTypes = {};

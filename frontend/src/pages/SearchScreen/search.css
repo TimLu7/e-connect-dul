@@ -1,53 +1,24 @@
-.vertical-bar {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  width: 100px;
-  background-color: #f9f9f9;
-  /* position: fixed; */
-  min-height: 550px;
-  height: 100%;
-  overflow: auto;
-}
-
-.vertical-bar li a {
-  display: block;
-  color: #000;
-  padding: 8px 16px;
-  text-decoration: none;
-}
-
-.vertical-bar li a.active {
-  background-color: #49b6d6;
-  color: white;
-}
-
-.vertical-bar li a:hover:not(.active) {
-  background-color: #555;
-  color: white;
-}
-
 .search-bar {
-  padding: 10px;
+    padding: 10px;
 }
 
 .search-input input {
-  padding: 0 10px;
-  height: 50px;
-  width: 70%;
-  caret-color: #536bf6;
-  font-size: 19px;
-  font-weight: 300;
-  color: black;
-  transition: width 0.4s linear;
-  z-index: index 100;
+    padding: 0 10px;
+    height: 50px;
+    width: 70%;
+    caret-color: #536bf6;
+    font-size: 19px;
+    font-weight: 300;
+    color: black;
+    transition: width 0.4s linear;
+    z-index: index 100;
 }
 
 .search-button {
-  background-color: #4db7fe;
-  height: 50px;
-  width: 120px;
-  color: #fff;
-  border: none;
-  border-radius: 10px;
+    background-color: rgb(11, 88, 166);
+    height: 50px;
+    width: 120px;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
 }

@@ -9,27 +9,18 @@ function SignUpForm() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [passwordTwo, setPasswordTwo] = useState("");
-    const [isConfirmPassword, setIsConfirmPassword] = useState(false);
+    const [isConfirmPassword, setIsConfirmPassword] = useState(true);
+    const [isSignUpSuccess, setIsSignUpSuccess] = useState(false);
 
-    // function handleSetPassword(e) {
-    //     setPassword(e.target.value);
-    // }
-
-    // function handdleSetPasswordTwo(e) {
-    //   console.log(`password2 is equal to`, passwordTwo);
-    //   setPasswordTwo(e.target.value);
-    //   if (password === passwordTwo) {
-    //     setIsConfirmPassword(true);
-    //   } else {
-    //     setIsConfirmPassword(false);
-    //   }
-    // }
     const navigate = useNavigate();
     const [isRegistered, setIsRegistered] = useState(false);
     async function handleRegister(e) {
         e.preventDefault();
         if (password !== passwordTwo) {
             setIsConfirmPassword(false);
+            setTimeout(() => {
+                setIsConfirmPassword(true);
+            }, 2000);
             console.log("Passwords are different, Please reenter");
         } else {
             setIsConfirmPassword(true);
@@ -58,7 +49,6 @@ function SignUpForm() {
                 .then((res) => {
                     console.log("signup complete", res.ok);
                     if (res.isRegistered) {
-                        // console.log()
                         setIsRegistered(true);
                     } else {
                         setIsSignUpSuccess(true);
@@ -111,7 +101,7 @@ function SignUpForm() {
                         Password:
                     </label>
                     <input
-                        onChange={handleSetPassword}
+                        onChange={(e) => setPassword(e.target.value)}
                         type="password"
                         className="form-control signup-input"
                         id="signUpPassword"
@@ -126,12 +116,7 @@ function SignUpForm() {
                         Please re-enter your password:
                     </label>
                     <input
-                        onChange={handdleSetPasswordTwo}
-                        style={{
-                            backgroundColor: isConfirmPassword
-                                ? "white"
-                                : "pink",
-                        }}
+                        onChange={(e) => setPasswordTwo(e.target.value)}
                         type="password"
                         className="form-control signup-input"
                         id="confirmPassword"
@@ -142,6 +127,27 @@ function SignUpForm() {
                     ></input>
                     {isRegistered ? <h3>User already exists</h3> : ""}
                 </div>
+                {isConfirmPassword ? (
+                    ""
+                ) : (
+                    <div class="alert alert-warning" role="alert">
+                        Password doesn't match. Please Re-enter your password.
+                    </div>
+                )}
+                {isRegistered ? (
+                    <div class="alert alert-warning" role="alert">
+                        User already exist. Please Login.
+                    </div>
+                ) : (
+                    ""
+                )}
+                {isSignUpSuccess ? (
+                    <div class="alert alert-success" role="alert">
+                        Sign Up Success!
+                    </div>
+                ) : (
+                    ""
+                )}
                 <button
                     id="register-button"
                     type="submit"

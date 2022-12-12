@@ -1,119 +1,115 @@
 .card {
-  max-width: 250px;
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  position: relative;
-  margin: 10px auto;
-  cursor: pointer;
-  /* height: 800px; */
+    max-width: 250px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: relative;
+    margin: 10px auto;
+    cursor: pointer;
+    /* height: 800px; */
 }
 
 .buttons-container {
-  width: 100%;
-  height: auto;
-  display: flex;
+    width: 100%;
+    height: auto;
+    display: flex;
 }
 
 .buttons-container span {
-  display: block;
-  margin: 0 auto;
+    display: block;
+    margin: 0 auto;
 }
 
 .buttons-container button {
-  height: 40px;
-  width: 60px;
-  align-items: center;
-  justify-content: center;
-  background-color: #cbcbcb;
-  color: #666;
-  border: none;
-  box-sizing: border-box;
-  border-radius: 3px;
-  margin: 0 5px;
+    height: 40px;
+    width: 60px;
+    align-items: center;
+    justify-content: center;
+    background-color: #cbcbcb;
+    color: rgb(5, 5, 5);
+    border: none;
+    box-sizing: border-box;
+    border-radius: 3px;
+    margin: 0 5px;
 }
 
 .buttons-container button:hover {
-  background-color: rgb(155, 154, 154);
+    background-color: rgb(155, 154, 154);
 }
 
 .buttons-container button img {
-  width: 30px;
-  height: auto;
+    width: 30px;
+    height: auto;
 }
 
 .card img {
-  margin: 0 auto;
-  max-width: 100%;
-  /* height: auto; */
-  max-height: 250px;
-  object-fit: fill;
-  transition: all 0.25s linear;
+    margin: 0 auto;
+    max-width: 100%;
+    /* height: auto; */
+    max-height: 250px;
+    object-fit: fill;
+    transition: all 0.25s linear;
 }
 
 .card-content {
-  position: relative;
-  padding: 15px;
-  background-color: #fff;
+    position: relative;
+    padding: 15px;
+    background-color: #fff;
 }
 
 .card-name {
-  font-weight: bold;
-  position: relative;
-  left: 0px;
-  right: 0px;
-  color: rgb(0, 0, 0);
-  font-size: 17px;
+    font-weight: bold;
+    position: relative;
+    left: 0px;
+    right: 0px;
+    color: rgb(0, 0, 0);
+    font-size: 17px;
 }
 
 .card-name p {
-  font-weight: 600;
-  font-size: 13px;
-  overflow: hidden;
-  letter-spacing: 1.5px;
+    font-weight: 600;
+    font-size: 13px;
+    overflow: hidden;
+    letter-spacing: 1.5px;
+    color: #040404;
 }
 
 .card-description {
-  height: 50px;
-  overflow: hidden;
-  color: #777;
-  font-size: 12px;
-  padding: 10px;
+    height: 50px;
+    overflow: hidden;
+    color: rgb(8, 8, 8);
+    font-size: 12px;
+    padding: 10px;
 }
 
 .card-overview {
-  padding: 5px 0px;
+    padding: 5px 0px;
 }
 
 .card-overview p {
-  font-size: 15px;
-  font-weight: 600;
-  color: #777;
-  overflow: hidden;
-}
-
-.card-overview h6 {
-  color: #273751;
-  font-weight: bold;
+    font-size: 15px;
+    font-weight: 600;
+    color: rgb(9, 9, 9);
+    overflow: hidden;
 }
 
 .card-content::before {
-  content: "";
-  position: absolute;
-  height: 20px;
-  top: -10px;
-  left: 0px;
-  right: 0px;
-  background-color: #fff;
-  z-index: 0;
-  transform: skewY(3deg);
+    content: "";
+    position: absolute;
+    height: 20px;
+    top: -10px;
+    left: 0px;
+    right: 0px;
+    background-color: #fff;
+    z-index: 0;
+    transform: skewY(3deg);
 }
 
 .card:hover .card-icon {
-  transform: rotate(5deg) scale(1.1, 1.1);
+    transform: rotate(5deg) scale(1.1, 1.1);
 }
 
 .updateCard {
-  max-width: 250px;
+    max-width: 250px;
 }

@@ -9,6 +9,7 @@ const ProfileScreen = () => {
     // get currnet user
     const [user, setUser] = useState(undefined);
     const [deleteUser, setDeleteUser] = useState(false);
+    const [saveUser, setSaveUser] = useState(false);
     const getUser = () => {
         fetch("/getusers")
             .then((res) => res.json())
@@ -93,12 +94,6 @@ const ProfileScreen = () => {
                 .catch((err) => {
                     console.log(err);
                 });
-            // if (res) {
-            //   console.log("User is successfully deleted");
-            //   // redirect to sign up page
-            // } else {
-            //   console.log("User delete failed, please try again");
-            // }
         } catch (e) {
             console.log(e);
         }
@@ -125,190 +120,231 @@ const ProfileScreen = () => {
                 method: "post",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(saveUser),
-            }).catch((err) => {
-                console.log(err);
-            });
+            })
+                .then((res) => {
+                    setSaveUser(true);
+                    setTimeout(() => {
+                        setSaveUser(false);
+                    }, 2000);
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
         } catch (e) {
             console.log(e);
         }
     }
 
     return (
-        <div className="profile-screen">
-            <Navigation current={user} changeUser={changeUser} />
-            <div className="container rounded bg-white mt-5 mb-5">
-                <div className="row">
-                    <div className="col-md-3 border-right">
-                        <div className="d-flex flex-column align-items-center text-center p-3 py-5">
-                            <img
-                                className="rounded-circle mt-5"
-                                width="150px"
-                                src="/images/profile-icon1.png"
-                                alt="profile-icon"
-                            ></img>
-                            <span className="font-weight-bold">
-                                {firstName + " " + lastName}
-                            </span>
-                            <span className="text-black-50">{email}</span>
-                            <span> </span>
+        <main>
+            <div className="profile-screen">
+                <Navigation current={user} changeUser={changeUser} />
+                <div className="container rounded bg-white mt-5 mb-5">
+                    <div className="row">
+                        <div className="col-md-3 border-right">
+                            <div className="d-flex flex-column align-items-center text-center p-3 py-5">
+                                <img
+                                    className="rounded-circle mt-5"
+                                    width="150px"
+                                    src="/images/profile-icon1.png"
+                                    alt="profile-icon"
+                                ></img>
+                                <span className="font-weight-bold">
+                                    {firstName + " " + lastName}
+                                </span>
+                                <span className="user-email-info">{email}</span>
+                            </div>
                         </div>
-                    </div>
-                    <div className="col-md-5 border-right">
-                        <div className="p-3 py-5">
-                            <div className="d-flex justify-content-between align-items-center mb-3">
-                                <h4 className="text-right">Profile Settings</h4>
-                            </div>
-                            <div className="row mt-2">
-                                <div className="col-md-6">
-                                    <label className="labels">Fisrt Name</label>
-                                    <input
-                                        type="text"
-                                        className="form-control"
-                                        onChange={(e) =>
-                                            setFirstName(e.target.value)
-                                        }
-                                        value={firstName}
-                                    ></input>
+                        <div className="col-md-5 border-right">
+                            <div className="p-3 py-5">
+                                <div className="d-flex justify-content-between align-items-center mb-3">
+                                    <h1 className="text-right">
+                                        Profile Settings
+                                    </h1>
                                 </div>
-                                <div className="col-md-6">
-                                    <label className="labels">Last Name</label>
-                                    <input
-                                        type="text"
-                                        className="form-control"
-                                        onChange={(e) =>
-                                            setLastName(e.target.value)
-                                        }
-                                        value={lastName}
-                                    ></input>
-                                </div>
-                            </div>
-                            <div className="row mt-3">
-                                <div className="col-md-12">
-                                    <label className="labels">Phone</label>
-                                    <input
-                                        type="text"
-                                        className="form-control"
-                                        onChange={(e) =>
-                                            setPhoneNumber(e.target.value)
-                                        }
-                                        value={phoneNumber}
-                                    ></input>
-                                </div>
-                                <div className="col-md-12">
-                                    <label className="labels">
-                                        Address Line 1
-                                    </label>
-                                    <input
-                                        type="text"
-                                        className="form-control"
-                                        onChange={(e) =>
-                                            setAddressLOne(e.target.value)
-                                        }
-                                        value={addressLOne}
-                                    ></input>
-                                </div>
-                                <div className="col-md-12">
-                                    <label className="labels">
-                                        Address Line 2
-                                    </label>
-                                    <input
-                                        type="text"
-                                        className="form-control"
-                                        onChange={(e) =>
-                                            setAddressLTwo(e.target.value)
-                                        }
-                                        value={addressLTwo}
-                                    ></input>
-                                </div>
-                                <div className="col-md-12">
-                                    <label className="labels">Postcode</label>
-                                    <input
-                                        type="text"
-                                        className="form-control"
-                                        onChange={(e) =>
-                                            setPostcode(e.target.value)
-                                        }
-                                        value={postcode}
-                                    ></input>
-                                </div>
-                                <div className="col-md-12">
-                                    <label className="labels">State</label>
-                                    <input
-                                        type="text"
-                                        className="form-control"
-                                        onChange={(e) =>
-                                            setAddressState(e.target.value)
-                                        }
-                                        value={addressState}
-                                    ></input>
-                                </div>
-                                <div className="col-md-12">
-                                    <label className="labels">Country</label>
-                                    <input
-                                        type="text"
-                                        className="form-control"
-                                        onChange={(e) =>
-                                            setCountry(e.target.value)
-                                        }
-                                        value={country}
-                                    ></input>
-                                </div>
-                                <div className="col-md-12">
-                                    <label className="labels">Email</label>
-                                    <input
-                                        type="text"
-                                        className="form-control"
-                                        onChange={(e) =>
-                                            setEmail(e.target.value)
-                                        }
-                                        value={email}
-                                    ></input>
-                                </div>
-                                <div className="col-md-12">
-                                    <label className="labels">Education</label>
-                                    <input
-                                        type="text"
-                                        className="form-control"
-                                        onChange={(e) =>
-                                            setEducation(e.target.value)
-                                        }
-                                        value={education}
-                                    ></input>
-                                </div>
-                            </div>
-                            <div className="mt-5 text-center">
-                                {deleteUser ? (
-                                    <div
-                                        class="alert alert-success"
-                                        role="alert"
-                                    >
-                                        Successfully deleted the user!
+                                <div className="row mt-2">
+                                    <div className="col-md-6">
+                                        <label className="labels">
+                                            Fisrt Name
+                                        </label>
+                                        <input
+                                            aria-label="fn-input"
+                                            type="text"
+                                            className="form-control"
+                                            onChange={(e) =>
+                                                setFirstName(e.target.value)
+                                            }
+                                            value={firstName}
+                                        ></input>
                                     </div>
-                                ) : (
-                                    ""
-                                )}
-                                <button
-                                    className="btn btn-primary profile-button mx-1"
-                                    type="button"
-                                    onClick={handleSaveProfile}
-                                >
-                                    Save Profile
-                                </button>
-                                <button
-                                    className="btn btn-danger mx-1"
-                                    type="button"
-                                    onClick={handleDeleteUser}
-                                >
-                                    Delete user
-                                </button>
-                                <h3>{deleteMes}</h3>
+                                    <div className="col-md-6">
+                                        <label className="labels">
+                                            Last Name
+                                        </label>
+                                        <input
+                                            aria-label="ln-input"
+                                            type="text"
+                                            className="form-control"
+                                            onChange={(e) =>
+                                                setLastName(e.target.value)
+                                            }
+                                            value={lastName}
+                                        ></input>
+                                    </div>
+                                </div>
+                                <div className="row mt-3">
+                                    <div className="col-md-12">
+                                        <label className="labels">Phone</label>
+                                        <input
+                                            aria-label="pn-input"
+                                            type="text"
+                                            className="form-control"
+                                            onChange={(e) =>
+                                                setPhoneNumber(e.target.value)
+                                            }
+                                            value={phoneNumber}
+                                        ></input>
+                                    </div>
+                                    <div className="col-md-12">
+                                        <label className="labels">
+                                            Address Line 1
+                                        </label>
+                                        <input
+                                            aria-label="ad1-input"
+                                            type="text"
+                                            className="form-control"
+                                            onChange={(e) =>
+                                                setAddressLOne(e.target.value)
+                                            }
+                                            value={addressLOne}
+                                        ></input>
+                                    </div>
+                                    <div className="col-md-12">
+                                        <label className="labels">
+                                            Address Line 2
+                                        </label>
+                                        <input
+                                            aria-label="ad2-input"
+                                            type="text"
+                                            className="form-control"
+                                            onChange={(e) =>
+                                                setAddressLTwo(e.target.value)
+                                            }
+                                            value={addressLTwo}
+                                        ></input>
+                                    </div>
+                                    <div className="col-md-12">
+                                        <label className="labels">
+                                            Postcode
+                                        </label>
+                                        <input
+                                            aria-label="pscd-input"
+                                            type="text"
+                                            className="form-control"
+                                            onChange={(e) =>
+                                                setPostcode(e.target.value)
+                                            }
+                                            value={postcode}
+                                        ></input>
+                                    </div>
+                                    <div className="col-md-12">
+                                        <label className="labels">State</label>
+                                        <input
+                                            aria-label="st-input"
+                                            type="text"
+                                            className="form-control"
+                                            onChange={(e) =>
+                                                setAddressState(e.target.value)
+                                            }
+                                            value={addressState}
+                                        ></input>
+                                    </div>
+                                    <div className="col-md-12">
+                                        <label className="labels">
+                                            Country
+                                        </label>
+                                        <input
+                                            aria-label="country-input"
+                                            type="text"
+                                            className="form-control"
+                                            onChange={(e) =>
+                                                setCountry(e.target.value)
+                                            }
+                                            value={country}
+                                        ></input>
+                                    </div>
+                                    <div className="col-md-12">
+                                        <label className="labels">Email</label>
+                                        <input
+                                            aria-label="email-input"
+                                            type="text"
+                                            className="form-control"
+                                            onChange={(e) =>
+                                                setEmail(e.target.value)
+                                            }
+                                            value={email}
+                                        ></input>
+                                    </div>
+                                    <div className="col-md-12">
+                                        <label className="labels">
+                                            Education
+                                        </label>
+                                        <input
+                                            aria-label="edu-input"
+                                            type="text"
+                                            className="form-control"
+                                            onChange={(e) =>
+                                                setEducation(e.target.value)
+                                            }
+                                            value={education}
+                                        ></input>
+                                    </div>
+                                </div>
+                                <div className="mt-5 text-center">
+                                    {saveUser ? (
+                                        <div
+                                            class="alert alert-success"
+                                            role="alert"
+                                        >
+                                            Profile Saved!
+                                        </div>
+                                    ) : (
+                                        ""
+                                    )}
+                                    {deleteUser ? (
+                                        <div
+                                            class="alert alert-success"
+                                            role="alert"
+                                        >
+                                            Successfully deleted the user!
+                                        </div>
+                                    ) : (
+                                        ""
+                                    )}
+                                    <button
+                                        aria-label="save-button"
+                                        className="btn btn-primary profile-button mx-1 "
+                                        type="button"
+                                        onClick={handleSaveProfile}
+                                    >
+                                        Save Profile
+                                    </button>
+                                    <button
+                                        className="btn btn-danger mx-1"
+                                        type="button"
+                                        onClick={handleDeleteUser}
+                                    >
+                                        Delete user
+                                    </button>
+                                    <p>{deleteMes}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <Footer />
             </div>
-            <Footer />
-        </div>
+        </main>
     );
 };
 ProfileScreen.propTypes = {};
