@@ -69,10 +69,18 @@ We used AWS as our cloud service provider.
 
 
 
+
+
 ### Improvements Made:   
-- Create conditional alart when users take actions to avoid confusion.     
+- Create conditional alart when users take actions to avoid confusion.   
 - Darker Background Color that looks more professional.    
-- Improve user accessibility using AXE DevTools.
+- Improve user accessibility using AXE DevTools.     
+
+
+<img width="1680" alt="Screen Shot 2022-12-12 at 1 25 41 AM" src="https://user-images.githubusercontent.com/63666127/207009689-f4813987-7759-4db9-b059-7f96c338cb23.png">
+<img width="1680" alt="Screen Shot 2022-12-12 at 1 25 22 AM" src="https://user-images.githubusercontent.com/63666127/207009701-9cab8130-8916-4257-9576-c639860eba10.png">
+<img width="1680" alt="Screen Shot 2022-12-12 at 1 24 52 AM" src="https://user-images.githubusercontent.com/63666127/207009717-4c3e4e98-b6db-49e4-831b-ce6a4e8dcc60.png">
+
 
 
 
