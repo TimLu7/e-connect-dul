@@ -66,20 +66,26 @@ This website that provides functionality:
 We used AWS as our cloud service provider.    
 
 
+### Color Palette:
+
+
+
+
+### Improvements Made:   
+- Alart when users take actions to avoid confusion.     
+- Darker Background Color that looks more professional.    
+- Improve user accessibility using AXE DevTools.
+-
+
+
+
 ### Screen Shots:   
 
-<img width="1440" alt="Screen Shot 2022-11-22 at 11 11 39 AM" src="https://user-images.githubusercontent.com/63666127/203412584-c0ad9473-e7b2-42eb-91bc-c6fccf424d3d.png">
-
-![Screen Shot 2022-11-28 at 12 40 58 AM](https://user-images.githubusercontent.com/63666127/204233900-91c0f154-e652-4a31-aafa-e77812561431.png)
-
-![Screen Shot 2022-11-28 at 12 41 24 AM](https://user-images.githubusercontent.com/63666127/204234030-03b46957-7198-4d1e-9e7e-07aa40a496a2.png)
-
-![317122557_3272361193015299_187325729753169284_n](https://user-images.githubusercontent.com/63666127/204234069-1e4500f6-67c2-405b-b606-99ff685adf5f.jpg)
+<img width="1680" alt="Screen Shot 2022-12-12 at 12 53 46 AM" src="https://user-images.githubusercontent.com/63666127/207003218-ce618f5f-60fb-4c3b-9624-2bfea5761be8.png">
+<img width="1678" alt="Screen Shot 2022-12-12 at 12 54 25 AM" src="https://user-images.githubusercontent.com/63666127/207003233-9e23e129-b84a-43be-8723-3bea5475bca4.png">
+<img width="1679" alt="Screen Shot 2022-12-12 at 12 54 35 AM" src="https://user-images.githubusercontent.com/63666127/207003241-4eed5c74-7372-402d-a31e-3604e6dd1ae9.png">
 
 
 
 
 
-
-
-https://github.com/JasonKTChen/E-connect<img width="1440" alt="Screen Shot 2022-11-22 at 11 11 39 AM" src="https://user-images.githubusercontent.com/63666127/203412584-c0ad9473-e7b2-42eb-91bc-c6fccf424d3d.png">
