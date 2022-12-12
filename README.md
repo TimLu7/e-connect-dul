@@ -4,7 +4,8 @@ Author: Chun-Wei Tseng, Kuan-Tsa Chen
 
 Link to Class: https://johnguerra.co/classes/webDevelopment_fall_2022/
 
-Link to Home Page:
+Link to Home Page: https://e-connect.onrender.com/
+
 
 Design Document: https://docs.google.com/document/d/1vhc_Klf_8pT1yA9qHOuYvd1ZASYGsN5h7oQ_FzdR9kw/edit#
 
