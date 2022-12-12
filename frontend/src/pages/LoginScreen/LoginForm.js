@@ -7,6 +7,7 @@ function LoginForm() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [isLoggedInSuccess, setIsLoggedInSuccess] = useState(false);
+    const [loginFailed, setLoginFailed] = useState(false);
     const navigate = useNavigate();
     function handleSubmit(evt) {
         evt.preventDefault();
@@ -20,13 +21,21 @@ function LoginForm() {
             method: "post",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(user),
-        })
+        }).then((res)=>res.json())
             .then((res) => {
-                console.log("verified", res.user);
-                setIsLoggedInSuccess(true);
-                setTimeout(() => {
-                    navigate("/");
-                }, 2000);
+                if (res.isLoggedIn === true){
+                    setIsLoggedInSuccess(true);
+                    setTimeout(() => {
+                        setIsLoggedInSuccess(false);
+                        navigate("/");
+                    }, 2000);
+                }else{
+                    setLoginFailed(true);
+                    setTimeout(() => {
+                        setLoginFailed(false);
+                    }, 2000);
+                }
+                
             })
             .catch((err) => {
                 console.log(err);
@@ -83,6 +92,9 @@ function LoginForm() {
                         ) : (
                             ""
                         )}
+                        {loginFailed ? (<div class="alert alert-danger" role="alert">
+                                Incorrect username or password.Please try again.
+                                </div>):("")}
                         <button
                             id="login-button"
                             className="btn btn-primary mr-auto"
