@@ -3,12 +3,12 @@
 import { MongoClient } from "mongodb";
 import bcrypt from "bcryptjs";
 import dotenv from "dotenv";
-dotenv.config({ path: "../../config.env" });
+dotenv.config({ path: "../config.env" });
 
 // use environment variable
-// const DB_USER = "jason";
-// const DB_PASSWORD = "1234";
-// const DB_NAME = "E-connect";
+const DB_USER = process.env.MY_DB_USERNAME;
+const DB_PASSWORD = process.env.MY_DB_PASSWORD;
+const DB_NAME = process.env.MY_DB_NAME;
 
 function UserDB() {
   // db setting
@@ -29,13 +29,7 @@ function UserDB() {
       const ret = await usersCol
         .findOne({ username: currentuser.username })
         .then(async (user) => {
-          //if user not exist than return status 400
-          // if (!user) res.status(400).json({ msg: "User not exist" });
-          //if user exist than compare password
-          //first param comes from the user
-          //second param comes from the database
           const res = await bcrypt.compare(currentuser.password, user.password);
-          // console.log(r);
           return res;
         });
 

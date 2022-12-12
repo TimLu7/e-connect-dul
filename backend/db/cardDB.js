@@ -1,10 +1,12 @@
 // Kuan Tsa Chen
+
 import { MongoClient } from "mongodb";
 import dotenv from "dotenv";
-dotenv.config({ path: "../../config.env" });
-// const DB_USER = "jason";
-// const DB_PASSWORD = "1234";
-// const DB_NAME = "E-connect";
+dotenv.config({ path: "../config.env" });
+
+const DB_USER = process.env.MY_DB_USERNAME;
+const DB_PASSWORD = process.env.MY_DB_PASSWORD;
+const DB_NAME = process.env.MY_DB_NAME;
 
 function MyMongoDB() {
   const myDB = {};
